@@ -838,6 +838,7 @@ class StorageHelper(object):
         if not folder_uri:
             return folder_uri
         _base_url = cls._resolve_base_url(folder_uri) if not base_url else base_url
+        folder_uri= folder_uri.replace(':80','')
 
         if not folder_uri.startswith(_base_url):
             prev_folder_uri = folder_uri

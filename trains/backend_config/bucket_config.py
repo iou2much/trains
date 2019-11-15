@@ -188,6 +188,10 @@ class S3BucketConfigurations(BaseBucketConfigurations):
         parsed = furl.furl(uri)
 
         if parsed.port:
+            if parsed.port == 80:
+                host = parsed.netloc.split(':')[0]
+            else:
+                host = parsed.netloc
             host = parsed.netloc
             parts = parsed.path.segments
             bucket = parts[0] if parts else None
@@ -197,6 +201,7 @@ class S3BucketConfigurations(BaseBucketConfigurations):
 
         return S3BucketConfig(
             key=self._default_key,
+            secure=False,
             secret=self._default_secret,
             region=self._default_region,
             multipart=True,
