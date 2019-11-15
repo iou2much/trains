@@ -838,8 +838,8 @@ class StorageHelper(object):
         if not folder_uri:
             return folder_uri
         _base_url = cls._resolve_base_url(folder_uri) if not base_url else base_url
-        folder_uri= folder_uri.replace(':80','')
-        _base_url= _base_url.replace(':80','')
+        #folder_uri= folder_uri.replace(':80','')
+        #_base_url= _base_url.replace(':80','')
 
         if not folder_uri.startswith(_base_url):
             prev_folder_uri = folder_uri
@@ -852,8 +852,8 @@ class StorageHelper(object):
 
                 log.debug('Upload destination {} amended to {} for registration purposes'.format(
                     prev_folder_uri, folder_uri))
-            else:
-                raise ValueError('folder_uri: {} does not start with base url: {}'.format(folder_uri, _base_url))
+            #else:
+            #    raise ValueError('folder_uri: {} does not start with base url: {}'.format(folder_uri, _base_url))
 
         return folder_uri
 
